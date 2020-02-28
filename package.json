@@ -1,0 +1,44 @@
+{
+  "name": "@nodexe/redis",
+  "version": "0.1.0",
+  "description": "A powerful tools library",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha --exit --recursive --require ./scripts/mocha-bootload.js",
+    "coverage": "nyc --reporter=text mocha --exit --recursive --require ./scripts/mocha-bootload.js",
+    "lint": "eslint src/ test/;",
+    "lint-fix": "eslint --fix src/ test/",
+    "dependency-check": "dependency-check ./package.json --unused --no-dev --entry ./index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ezeportela/nodexe-redis.git"
+  },
+  "keywords": [
+    "redis",
+    "tools",
+    "library"
+  ],
+  "author": "Ezequiel Portela <eportelab@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ezeportela/nodexe-redis/issues"
+  },
+  "homepage": "https://github.com/ezeportela/nodexe-redis#readme",
+  "dependencies": {
+    "@nodexe/common": "^0.1.1",
+    "ioredis": "^4.14.1",
+    "lodash": "^4.17.15"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "eslint": "^6.6.0",
+    "eslint-config-google": "^0.14.0",
+    "jsonwebtoken": "^8.5.1",
+    "mocha": "^6.2.2",
+    "nyc": "^14.1.1",
+    "proxyquire": "^2.1.3",
+    "sinon": "^7.5.0",
+    "sinon-chai": "^3.3.0"
+  }
+}
