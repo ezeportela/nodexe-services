@@ -10,17 +10,14 @@ const getItem = async (instance, key, format = 'json') => {
   return item;
 };
 
-const setItem = (instance, key, item, format = 'json') => {
-  if (!_.isEmpty(item)) {
-    instance.setItem(key, item, format);
-  }
-};
+const setItem = (instance, key, item, format = 'json') =>
+  instance.setItem(key, item, format);
 
-const removeItem = (instance, key) => instance.removeItem(key);
+const unsetItem = (instance, key) => instance.removeItem(key);
 
 module.exports = {
   createRedisClient,
   getItem,
   setItem,
-  removeItem,
+  unsetItem,
 };

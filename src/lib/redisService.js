@@ -39,7 +39,7 @@ class RedisService {
     }
     /* eslint-enable */
 
-    this.instance.set(key, value);
+    return this.instance.set(key, value);
   }
 
   removeItem(key) {
