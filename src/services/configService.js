@@ -1,15 +1,13 @@
 const _ = require('lodash');
 
-const ConfigService = (configDefer) => {
+const configService = (configDefer) => {
   const defer = configDefer.deferConfig;
-  const getServiceConfig = (dependency, options) =>
+  return (dependency, options) =>
     defer((config) =>
       _.defaultsDeep(options, config.dependencies[dependency], {
         dependency,
       }),
     );
-
-  return {getServiceConfig};
 };
 
-module.exports = ConfigService;
+module.exports = configService;
