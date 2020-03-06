@@ -2,11 +2,10 @@ const jwtDecode = require('jwt-decode');
 const {redisRepository} = require('@nodexe/redis');
 const _ = require('lodash');
 
-const TokenCacheService = ({
-  redisReadConnection,
-  redisPrimaryConnection,
-  key,
-}) => {
+const TokenCacheService = (
+  {redisReadConnection, redisPrimaryConnection, key},
+  compensation = 30,
+) => {
   let readInstance;
   let primaryInstance;
 
@@ -18,7 +17,7 @@ const TokenCacheService = ({
     const item = await redisRepository.getItem(readInstance, key);
 
     if (
-      (item && item.exp - 30 < new Date().getTime() / 1000) ||
+      (item && item.exp - compensation < new Date().getTime() / 1000) ||
       _.isNull(item)
     ) {
       return {};

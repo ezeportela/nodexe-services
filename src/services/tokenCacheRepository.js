@@ -7,12 +7,16 @@ const getTokenCache = async ({
   key,
   service,
   extractToken,
+  compensation,
 }) => {
-  const {getTokenFromCache, sendTokenToCache} = tokenCacheService({
-    redisReadConnection,
-    redisPrimaryConnection,
-    key,
-  });
+  const {getTokenFromCache, sendTokenToCache} = tokenCacheService(
+    {
+      redisReadConnection,
+      redisPrimaryConnection,
+      key,
+    },
+    compensation,
+  );
   const token = await getTokenFromCache(key);
 
   if (_.isEmpty(token)) {
