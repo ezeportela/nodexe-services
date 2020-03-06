@@ -1,7 +1,7 @@
 const tokenCacheService = require('./tokenCacheService');
 const _ = require('lodash');
 
-const tokenCacheRepository = async ({
+const requestToken = async ({
   redisReadConnection,
   redisPrimaryConnection,
   key,
@@ -28,4 +28,4 @@ const tokenCacheRepository = async ({
   return token;
 };
 
-module.exports = tokenCacheRepository;
+module.exports = {requestToken};
