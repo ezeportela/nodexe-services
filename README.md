@@ -1,4 +1,4 @@
-# @nodexe/redis
+# @nodexe/services
 
 ## Table of Contents
 
@@ -7,7 +7,7 @@
 
 ## Introduction
 
-This is a library with functions in order to connect with redis. All of them had been tested and used in different projects avoiding the effort to implement in your project.
+This is a library with useful services. All of them had been tested and used in different projects avoiding the effort to implement in your project.
 
 ## Install
 
@@ -20,9 +20,9 @@ Installation is done using the
 `npm install command`:
 
 ```sh
-$ npm install @nodexe/redis
+$ npm install @nodexe/services
 ```
 
 ## License
 
-@nodexe/redis is freely distributable under the terms of the [MIT license](LICENSE).
+@nodexe/services is freely distributable under the terms of the [MIT license](LICENSE).

@@ -1,6 +1,6 @@
 {
-  "name": "@nodexe/redis",
-  "version": "0.1.1",
+  "name": "@nodexe/services",
+  "version": "0.1.0",
   "description": "A powerful tools library",
   "main": "index.js",
   "scripts": {
@@ -12,22 +12,22 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ezeportela/nodexe-redis.git"
+    "url": "git+https://github.com/ezeportela/nodexe-services.git"
   },
   "keywords": [
-    "redis",
+    "services",
     "tools",
     "library"
   ],
   "author": "Ezequiel Portela <eportelab@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ezeportela/nodexe-redis/issues"
+    "url": "https://github.com/ezeportela/nodexe-services/issues"
   },
-  "homepage": "https://github.com/ezeportela/nodexe-redis#readme",
+  "homepage": "https://github.com/ezeportela/nodexe-services#readme",
   "dependencies": {
-    "@nodexe/common": "^0.1.1",
-    "ioredis": "^4.14.1",
+    "@nodexe/redis": "^0.1.1",
+    "jwt-decode": "^2.2.0",
     "lodash": "^4.17.15"
   },
   "devDependencies": {

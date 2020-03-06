@@ -1,4 +1,5 @@
-const RedisService = require('./src/lib/redisService');
-const redisRepository = require('./src/lib/redisRepository');
+const ConfigService = require('./src/services/configService');
+const TokenCacheService = require('./src/services/tokenCacheService');
+const tokenCacheRepository = require('./src/services/tokenCacheRepository');
 
-module.exports = {RedisService, redisRepository};
+module.exports = {ConfigService, TokenCacheService, tokenCacheRepository};
