@@ -1,6 +1,6 @@
 {
   "name": "@nodexe/services",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "A powerful tools library",
   "main": "index.js",
   "scripts": {
