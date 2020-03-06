@@ -17,11 +17,11 @@ const requestToken = async ({
     },
     compensation,
   );
-  const token = await getTokenFromCache(key);
+  const token = await getTokenFromCache();
 
   if (_.isEmpty(token)) {
     const _res = await service();
-    const _token = await sendTokenToCache(key, extractToken(_res.body));
+    const _token = await sendTokenToCache(extractToken(_res.body));
     Object.assign(token, _token);
   }
 
