@@ -1,6 +1,7 @@
 const axios = require('axios');
 const url = require('url');
 const _ = require('lodash');
+const https = require('https');
 
 class HttpService {
   constructor({name, method, logger}) {
@@ -44,10 +45,10 @@ class HttpService {
 
     this.logger('start_call_service', options);
 
-    const ssl = this.getSSL();
+    const httpsAgent = new https.Agent(this.getSSL());
 
-    if (!_.isEmpty(ssl)) {
-      Object.assign(options, {...ssl});
+    if (!_.isEmpty(httpsAgent)) {
+      Object.assign(options, {httpsAgent});
     }
 
     const response = await axios(options);
