@@ -2,6 +2,7 @@ const axios = require('axios');
 const url = require('url');
 const _ = require('lodash');
 const https = require('https');
+const config = require('config');
 
 class HttpService {
   constructor({name, method, logger}) {
@@ -12,7 +13,7 @@ class HttpService {
   }
 
   getConnection() {
-    throw new Error('the connection has not implemented yet.');
+    return config.get(`services.${this.name}.url`);
   }
 
   getURI(requestData = {}) {
