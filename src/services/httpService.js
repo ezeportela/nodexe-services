@@ -37,6 +37,7 @@ class HttpService {
 
   async request(requestData) {
     const options = {
+      name: this.name,
       method: this.method,
       url: this.getURI(requestData),
       headers: await this.getHeaders(requestData),
