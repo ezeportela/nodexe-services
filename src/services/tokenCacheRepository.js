@@ -8,6 +8,7 @@ const requestToken = async ({
   service,
   extractToken,
   compensation,
+  bodyProp = 'body',
 }) => {
   const {getTokenFromCache, sendTokenToCache} = tokenCacheService(
     {
@@ -21,7 +22,7 @@ const requestToken = async ({
 
   if (_.isEmpty(token)) {
     const _res = await service();
-    const _token = await sendTokenToCache(extractToken(_res.body));
+    const _token = await sendTokenToCache(extractToken(_res[bodyProp]));
     Object.assign(token, _token);
   }
 
