@@ -47,9 +47,9 @@ class HttpService {
 
     this.logger('start_call_service', options);
 
-    const httpsAgent = new https.Agent(this.getSSL());
-
-    if (!_.isEmpty(httpsAgent)) {
+    const ssl = this.getSSL();
+    if (!_.isEmpty(ssl)) {
+      const httpsAgent = new https.Agent(ssl);
       Object.assign(options, {httpsAgent});
     }
 
