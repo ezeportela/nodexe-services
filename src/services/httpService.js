@@ -43,13 +43,17 @@ class HttpService {
 
   async request(requestData) {
     try {
+      const name = this.getName();
+      const method = this.getMethod();
+      const url = this.getURI(requestData);
+      const headers = await this.getHeaders(requestData);
       const bodyType = this.getMethod() === 'get' ? 'params' : 'data';
 
       const options = {
-        name: this.getName(),
-        method: this.getMethod(),
-        url: this.getURI(requestData),
-        headers: await this.getHeaders(requestData),
+        name,
+        method,
+        url,
+        headers,
         [bodyType]: this.getRequestData(requestData),
       };
 
@@ -65,8 +69,7 @@ class HttpService {
       const response = await axios(options);
 
       this.log('end_call_service', {
-        name: this.getName(),
-        headers: await this.getHeaders(requestData),
+        name,
         response: response.data,
       });
 
