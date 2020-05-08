@@ -5,11 +5,12 @@ const https = require('https');
 const config = require('config');
 
 class HttpService {
-  constructor({name, method, logger}) {
-    this.name = name;
-    this.method = method;
-    this.bodyType = method === 'get' ? 'params' : 'data';
-    this.logger = logger;
+  getName() {
+    return '';
+  }
+
+  getMethod() {
+    return 'get';
   }
 
   getConnection() {
@@ -36,32 +37,44 @@ class HttpService {
     return {};
   }
 
+  log(name, message) {
+    console.log(name, message);
+  }
+
   async request(requestData) {
-    const options = {
-      name: this.name,
-      method: this.method,
-      url: this.getURI(requestData),
-      headers: await this.getHeaders(requestData),
-      [this.bodyType]: this.getRequestData(requestData),
-    };
+    try {
+      const bodyType = this.getMethod() === 'get' ? 'params' : 'data';
 
-    this.logger('start_call_service', options);
+      const options = {
+        name: this.name,
+        method: this.method,
+        url: this.getURI(requestData),
+        headers: await this.getHeaders(requestData),
+        [bodyType]: this.getRequestData(requestData),
+      };
 
-    const ssl = this.getSSL();
-    if (!_.isEmpty(ssl)) {
-      const httpsAgent = new https.Agent(ssl);
-      Object.assign(options, {httpsAgent});
+      this.log('start_call_service', options);
+
+      const ssl = this.getSSL();
+      if (!_.isEmpty(ssl)) {
+        const httpsAgent = new https.Agent(ssl);
+        Object.assign(options, {httpsAgent});
+        this.log('service_ssl', 'the ssl has been loaded successfully');
+      }
+
+      const response = await axios(options);
+
+      this.log('end_call_service', {
+        name: this.name,
+        headers: await this.getHeaders(requestData),
+        response: response.data,
+      });
+
+      return response;
+    } catch (err) {
+      this.log('service_error', err);
+      throw err;
     }
-
-    const response = await axios(options);
-
-    this.logger('end_call_service', {
-      name: this.name,
-      headers: await this.getHeaders(requestData),
-      response: response.data,
-    });
-
-    return response;
   }
 }
 
