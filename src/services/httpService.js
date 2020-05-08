@@ -14,7 +14,7 @@ class HttpService {
   }
 
   getConnection() {
-    return config.get(`services.${this.name}.url`);
+    return config.get(`services.${this.getName()}.url`);
   }
 
   getURI(requestData = {}) {
@@ -46,8 +46,8 @@ class HttpService {
       const bodyType = this.getMethod() === 'get' ? 'params' : 'data';
 
       const options = {
-        name: this.name,
-        method: this.method,
+        name: this.getName(),
+        method: this.getMethod(),
         url: this.getURI(requestData),
         headers: await this.getHeaders(requestData),
         [bodyType]: this.getRequestData(requestData),
@@ -65,7 +65,7 @@ class HttpService {
       const response = await axios(options);
 
       this.log('end_call_service', {
-        name: this.name,
+        name: this.getName(),
         headers: await this.getHeaders(requestData),
         response: response.data,
       });
