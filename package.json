@@ -27,7 +27,7 @@
   "homepage": "https://github.com/ezeportela/nodexe-services#readme",
   "dependencies": {
     "@nodexe/redis": "^0.1.1",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "config": "^3.3.1",
     "jwt-decode": "^2.2.0",
     "lodash": "^4.17.15"
